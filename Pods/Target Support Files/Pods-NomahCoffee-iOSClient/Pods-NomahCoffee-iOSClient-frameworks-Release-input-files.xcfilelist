@@ -1,0 +1,7 @@
+${PODS_ROOT}/Target Support Files/Pods-NomahCoffee-iOSClient/Pods-NomahCoffee-iOSClient-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AuthKit/AuthKit.framework
+${BUILT_PRODUCTS_DIR}/NCUtils/NCUtils.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
+${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework
+${BUILT_PRODUCTS_DIR}/StripeCore/StripeCore.framework

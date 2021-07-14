@@ -1,0 +1,6 @@
+framework module NCUtils {
+  umbrella header "NCUtils-umbrella.h"
+
+  export *
+  module * { export * }
+}

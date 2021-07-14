@@ -1,0 +1,556 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		822CA1052699E0D600BD6EFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA1042699E0D600BD6EFE /* AppDelegate.swift */; };
+		822CA1072699E0D600BD6EFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA1062699E0D600BD6EFE /* SceneDelegate.swift */; };
+		822CA10E2699E0DA00BD6EFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 822CA10D2699E0DA00BD6EFE /* Assets.xcassets */; };
+		822CA1112699E0DA00BD6EFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 822CA10F2699E0DA00BD6EFE /* LaunchScreen.storyboard */; };
+		822CA1192699E62E00BD6EFE /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA1182699E62E00BD6EFE /* NetworkingManager.swift */; };
+		822CA11B2699E6A900BD6EFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA11A2699E6A900BD6EFE /* User.swift */; };
+		822CA11D2699E7E100BD6EFE /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA11C2699E7E100BD6EFE /* Coffee.swift */; };
+		822CA11F2699E8AF00BD6EFE /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA11E2699E8AF00BD6EFE /* CartItem.swift */; };
+		822CA121269A16DE00BD6EFE /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA120269A16DE00BD6EFE /* CartViewController.swift */; };
+		822CA12D269B5F6C00BD6EFE /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA12C269B5F6C00BD6EFE /* MenuViewController.swift */; };
+		822CA135269B607100BD6EFE /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA134269B607100BD6EFE /* CartView.swift */; };
+		822CA137269B608700BD6EFE /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA136269B608700BD6EFE /* CartCell.swift */; };
+		822CA139269B609A00BD6EFE /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA138269B609A00BD6EFE /* CartViewModel.swift */; };
+		822CA13B269B60BC00BD6EFE /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA13A269B60BC00BD6EFE /* MenuView.swift */; };
+		822CA13E269B615A00BD6EFE /* MenuConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA13D269B615A00BD6EFE /* MenuConstants.swift */; };
+		822CA140269B62A200BD6EFE /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA13F269B62A200BD6EFE /* MenuViewModel.swift */; };
+		822CA142269B636D00BD6EFE /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA141269B636D00BD6EFE /* MenuCell.swift */; };
+		822CA144269B6B5600BD6EFE /* CartConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA143269B6B5600BD6EFE /* CartConstants.swift */; };
+		822CA147269B751500BD6EFE /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA146269B751500BD6EFE /* ProductDetailViewController.swift */; };
+		82FAA9DD269F77EA006E3E28 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FAA9DC269F77EA006E3E28 /* NetworkingError.swift */; };
+		82FAA9DF269F970B006E3E28 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FAA9DE269F970B006E3E28 /* ProductDetailView.swift */; };
+		8FD1993C6D8BE365D8486EC5 /* Pods_NomahCoffee_iOSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4863B213D24088EFA2BFB3 /* Pods_NomahCoffee_iOSClient.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0F4863B213D24088EFA2BFB3 /* Pods_NomahCoffee_iOSClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NomahCoffee_iOSClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1273D6DBA5B73BA46365E45C /* Pods-NomahCoffee-iOSClient.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NomahCoffee-iOSClient.debug.xcconfig"; path = "Target Support Files/Pods-NomahCoffee-iOSClient/Pods-NomahCoffee-iOSClient.debug.xcconfig"; sourceTree = "<group>"; };
+		4AD86B2EFE9AAA7C2E833255 /* Pods-NomahCoffee-iOSClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NomahCoffee-iOSClient.release.xcconfig"; path = "Target Support Files/Pods-NomahCoffee-iOSClient/Pods-NomahCoffee-iOSClient.release.xcconfig"; sourceTree = "<group>"; };
+		822CA1012699E0D600BD6EFE /* NomahCoffee-iOSClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NomahCoffee-iOSClient.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		822CA1042699E0D600BD6EFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		822CA1062699E0D600BD6EFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		822CA10D2699E0DA00BD6EFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		822CA1102699E0DA00BD6EFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		822CA1122699E0DA00BD6EFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		822CA1182699E62E00BD6EFE /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		822CA11A2699E6A900BD6EFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		822CA11C2699E7E100BD6EFE /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
+		822CA11E2699E8AF00BD6EFE /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		822CA120269A16DE00BD6EFE /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		822CA12C269B5F6C00BD6EFE /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		822CA134269B607100BD6EFE /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
+		822CA136269B608700BD6EFE /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		822CA138269B609A00BD6EFE /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		822CA13A269B60BC00BD6EFE /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		822CA13D269B615A00BD6EFE /* MenuConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuConstants.swift; sourceTree = "<group>"; };
+		822CA13F269B62A200BD6EFE /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
+		822CA141269B636D00BD6EFE /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		822CA143269B6B5600BD6EFE /* CartConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartConstants.swift; sourceTree = "<group>"; };
+		822CA146269B751500BD6EFE /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		82FAA9DC269F77EA006E3E28 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
+		82FAA9DE269F970B006E3E28 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		822CA0FE2699E0D600BD6EFE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FD1993C6D8BE365D8486EC5 /* Pods_NomahCoffee_iOSClient.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		06CEEAEDC500442CF9E89281 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0F4863B213D24088EFA2BFB3 /* Pods_NomahCoffee_iOSClient.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		822CA0F82699E0D600BD6EFE = {
+			isa = PBXGroup;
+			children = (
+				822CA1032699E0D600BD6EFE /* NomahCoffee-iOSClient */,
+				822CA1022699E0D600BD6EFE /* Products */,
+				A84E4BD2D3A7450DBBD8EA38 /* Pods */,
+				06CEEAEDC500442CF9E89281 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		822CA1022699E0D600BD6EFE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				822CA1012699E0D600BD6EFE /* NomahCoffee-iOSClient.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		822CA1032699E0D600BD6EFE /* NomahCoffee-iOSClient */ = {
+			isa = PBXGroup;
+			children = (
+				822CA1042699E0D600BD6EFE /* AppDelegate.swift */,
+				822CA1062699E0D600BD6EFE /* SceneDelegate.swift */,
+				822CA10D2699E0DA00BD6EFE /* Assets.xcassets */,
+				822CA10F2699E0DA00BD6EFE /* LaunchScreen.storyboard */,
+				822CA1122699E0DA00BD6EFE /* Info.plist */,
+				822CA1182699E62E00BD6EFE /* NetworkingManager.swift */,
+				82FAA9DC269F77EA006E3E28 /* NetworkingError.swift */,
+				822CA13C269B610600BD6EFE /* AppModels */,
+				822CA12A269B5EB000BD6EFE /* Menu */,
+				822CA145269B750100BD6EFE /* ProductDetail */,
+				822CA12B269B5EBD00BD6EFE /* Cart */,
+			);
+			path = "NomahCoffee-iOSClient";
+			sourceTree = "<group>";
+		};
+		822CA12A269B5EB000BD6EFE /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				822CA12C269B5F6C00BD6EFE /* MenuViewController.swift */,
+				822CA12E269B5FAC00BD6EFE /* Views */,
+				822CA12F269B5FB800BD6EFE /* ViewModels */,
+				822CA130269B5FC500BD6EFE /* Constants */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		822CA12B269B5EBD00BD6EFE /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				822CA120269A16DE00BD6EFE /* CartViewController.swift */,
+				822CA133269B5FDF00BD6EFE /* Views */,
+				822CA132269B5FD900BD6EFE /* ViewModels */,
+				822CA131269B5FD500BD6EFE /* Constants */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		822CA12E269B5FAC00BD6EFE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				822CA13A269B60BC00BD6EFE /* MenuView.swift */,
+				822CA141269B636D00BD6EFE /* MenuCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		822CA12F269B5FB800BD6EFE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				822CA13F269B62A200BD6EFE /* MenuViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		822CA130269B5FC500BD6EFE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				822CA13D269B615A00BD6EFE /* MenuConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		822CA131269B5FD500BD6EFE /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				822CA143269B6B5600BD6EFE /* CartConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		822CA132269B5FD900BD6EFE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				822CA138269B609A00BD6EFE /* CartViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		822CA133269B5FDF00BD6EFE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				822CA134269B607100BD6EFE /* CartView.swift */,
+				822CA136269B608700BD6EFE /* CartCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		822CA13C269B610600BD6EFE /* AppModels */ = {
+			isa = PBXGroup;
+			children = (
+				822CA11A2699E6A900BD6EFE /* User.swift */,
+				822CA11E2699E8AF00BD6EFE /* CartItem.swift */,
+				822CA11C2699E7E100BD6EFE /* Coffee.swift */,
+			);
+			path = AppModels;
+			sourceTree = "<group>";
+		};
+		822CA145269B750100BD6EFE /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+				822CA146269B751500BD6EFE /* ProductDetailViewController.swift */,
+				82FAA9E0269F97F5006E3E28 /* Views */,
+			);
+			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		82FAA9E0269F97F5006E3E28 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				82FAA9DE269F970B006E3E28 /* ProductDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A84E4BD2D3A7450DBBD8EA38 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1273D6DBA5B73BA46365E45C /* Pods-NomahCoffee-iOSClient.debug.xcconfig */,
+				4AD86B2EFE9AAA7C2E833255 /* Pods-NomahCoffee-iOSClient.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		822CA1002699E0D600BD6EFE /* NomahCoffee-iOSClient */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 822CA1152699E0DA00BD6EFE /* Build configuration list for PBXNativeTarget "NomahCoffee-iOSClient" */;
+			buildPhases = (
+				953522BF4A649BFAE9EE5BAC /* [CP] Check Pods Manifest.lock */,
+				822CA0FD2699E0D600BD6EFE /* Sources */,
+				822CA0FE2699E0D600BD6EFE /* Frameworks */,
+				822CA0FF2699E0D600BD6EFE /* Resources */,
+				5754C0F74DD5F44EB29FEF2D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NomahCoffee-iOSClient";
+			productName = "NomahCoffee-iOSClient";
+			productReference = 822CA1012699E0D600BD6EFE /* NomahCoffee-iOSClient.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		822CA0F92699E0D600BD6EFE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					822CA1002699E0D600BD6EFE = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+				};
+			};
+			buildConfigurationList = 822CA0FC2699E0D600BD6EFE /* Build configuration list for PBXProject "NomahCoffee-iOSClient" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 822CA0F82699E0D600BD6EFE;
+			productRefGroup = 822CA1022699E0D600BD6EFE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				822CA1002699E0D600BD6EFE /* NomahCoffee-iOSClient */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		822CA0FF2699E0D600BD6EFE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				822CA1112699E0DA00BD6EFE /* LaunchScreen.storyboard in Resources */,
+				822CA10E2699E0DA00BD6EFE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5754C0F74DD5F44EB29FEF2D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NomahCoffee-iOSClient/Pods-NomahCoffee-iOSClient-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NomahCoffee-iOSClient/Pods-NomahCoffee-iOSClient-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NomahCoffee-iOSClient/Pods-NomahCoffee-iOSClient-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		953522BF4A649BFAE9EE5BAC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NomahCoffee-iOSClient-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		822CA0FD2699E0D600BD6EFE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				822CA137269B608700BD6EFE /* CartCell.swift in Sources */,
+				822CA140269B62A200BD6EFE /* MenuViewModel.swift in Sources */,
+				822CA1192699E62E00BD6EFE /* NetworkingManager.swift in Sources */,
+				822CA13E269B615A00BD6EFE /* MenuConstants.swift in Sources */,
+				82FAA9DD269F77EA006E3E28 /* NetworkingError.swift in Sources */,
+				82FAA9DF269F970B006E3E28 /* ProductDetailView.swift in Sources */,
+				822CA142269B636D00BD6EFE /* MenuCell.swift in Sources */,
+				822CA144269B6B5600BD6EFE /* CartConstants.swift in Sources */,
+				822CA139269B609A00BD6EFE /* CartViewModel.swift in Sources */,
+				822CA1052699E0D600BD6EFE /* AppDelegate.swift in Sources */,
+				822CA11B2699E6A900BD6EFE /* User.swift in Sources */,
+				822CA13B269B60BC00BD6EFE /* MenuView.swift in Sources */,
+				822CA147269B751500BD6EFE /* ProductDetailViewController.swift in Sources */,
+				822CA121269A16DE00BD6EFE /* CartViewController.swift in Sources */,
+				822CA1072699E0D600BD6EFE /* SceneDelegate.swift in Sources */,
+				822CA12D269B5F6C00BD6EFE /* MenuViewController.swift in Sources */,
+				822CA135269B607100BD6EFE /* CartView.swift in Sources */,
+				822CA11D2699E7E100BD6EFE /* Coffee.swift in Sources */,
+				822CA11F2699E8AF00BD6EFE /* CartItem.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		822CA10F2699E0DA00BD6EFE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				822CA1102699E0DA00BD6EFE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		822CA1132699E0DA00BD6EFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		822CA1142699E0DA00BD6EFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		822CA1162699E0DA00BD6EFE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1273D6DBA5B73BA46365E45C /* Pods-NomahCoffee-iOSClient.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 92DETN2MKQ;
+				INFOPLIST_FILE = "NomahCoffee-iOSClient/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.NomahCoffee-iOSClient";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		822CA1172699E0DA00BD6EFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AD86B2EFE9AAA7C2E833255 /* Pods-NomahCoffee-iOSClient.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 92DETN2MKQ;
+				INFOPLIST_FILE = "NomahCoffee-iOSClient/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.NomahCoffee-iOSClient";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		822CA0FC2699E0D600BD6EFE /* Build configuration list for PBXProject "NomahCoffee-iOSClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				822CA1132699E0DA00BD6EFE /* Debug */,
+				822CA1142699E0DA00BD6EFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		822CA1152699E0DA00BD6EFE /* Build configuration list for PBXNativeTarget "NomahCoffee-iOSClient" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				822CA1162699E0DA00BD6EFE /* Debug */,
+				822CA1172699E0DA00BD6EFE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 822CA0F92699E0D600BD6EFE /* Project object */;
+}

@@ -1,0 +1,47 @@
+PODS:
+  - Alamofire (5.4.3)
+  - AuthKit (1.2):
+    - Alamofire (~> 5.2)
+    - NCUtils (~> 1.1)
+    - SnapKit (~> 5.0)
+  - NCUtils (1.2):
+    - NCUtils/Extensions (= 1.2)
+    - NCUtils/TextFields (= 1.2)
+  - NCUtils/Extensions (1.2)
+  - NCUtils/TextFields (1.2)
+  - SnapKit (5.0.1)
+  - Stripe (21.7.0):
+    - Stripe/Stripe3DS2 (= 21.7.0)
+    - StripeCore (= 21.7.0)
+  - Stripe/Stripe3DS2 (21.7.0):
+    - StripeCore (= 21.7.0)
+  - StripeCore (21.7.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - AuthKit (~> 1.2)
+  - NCUtils (~> 1.2)
+  - SnapKit (~> 5.0.0)
+  - Stripe (~> 21.7)
+
+SPEC REPOS:
+  https://github.com/NomahCoffee/NCPodspec.git:
+    - AuthKit
+    - NCUtils
+  trunk:
+    - Alamofire
+    - SnapKit
+    - Stripe
+    - StripeCore
+
+SPEC CHECKSUMS:
+  Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
+  AuthKit: 84e9ee36480de62e4b77a9de9a690fba750f4c0d
+  NCUtils: 8689f1558cbc6153df7e5d124cbbab4b97e39975
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Stripe: 90596971ef49bade169f68bc59369a796b30a045
+  StripeCore: c09b492efc3b269a6ff875ad738ca366db97e03b
+
+PODFILE CHECKSUM: c09a0fd6b0f90b9b7daa1c782fb6f60d168fdbc2
+
+COCOAPODS: 1.10.1
