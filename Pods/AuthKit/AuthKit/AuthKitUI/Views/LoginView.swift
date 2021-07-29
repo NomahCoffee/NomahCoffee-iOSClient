@@ -17,52 +17,51 @@ protocol LoginViewDelegate: MembershipViewDelegate {
     func login(email: String, password: String)
 }
 
-class LoginView: UIView {
+class LoginView: UIView, TakeActionViewDelegate {
     
     // MARK: Properties
     
     var delegate: LoginViewDelegate?
     
-    private let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = MembershipConstants.Login.headerTitle
-        return titleLabel
+    private let headlineView: HeadlineView = {
+        let headlineView = HeadlineView()
+        headlineView.viewModel = MembershipViewModel(type: .login)
+        return headlineView
     }()
     
     private let emailTextField: NCEmailTextField = {
         let emailTextField = NCEmailTextField()
+        emailTextField.textColor = .black
+        emailTextField.font = Fonts.Oxygen.title6
+        emailTextField.backgroundColor = Colors.sorrellBrown
+        emailTextField.activeBorderColor = UIColor.white.cgColor
         emailTextField.placeholder = MembershipConstants.Login.emailTextFieldPlaceholder
         return emailTextField
     }()
     
     private let passwordTextField: NCPasswordTextField = {
         let passwordTextField = NCPasswordTextField()
+        passwordTextField.textColor = .black
+        passwordTextField.font = Fonts.Oxygen.title6
+        passwordTextField.backgroundColor = Colors.sorrellBrown
+        passwordTextField.activeBorderColor = UIColor.white.cgColor
         passwordTextField.placeholder = MembershipConstants.Login.passwordTextFieldPlaceholder
         return passwordTextField
     }()
     
-    private let goToSignupButton: UIButton = {
-        let goToSignupButton = UIButton()
-        goToSignupButton.setTitle(MembershipConstants.Login.toggleButtonTitle, for: .normal)
-        goToSignupButton.setTitleColor(.label, for: .normal)
-        goToSignupButton.addTarget(self, action: #selector(goToSignupButtonTapped), for: .touchUpInside)
-        return goToSignupButton
-    }()
-    
-    private let loginButton: UIButton = {
-        let loginButton = UIButton()
-        loginButton.setTitle(MembershipConstants.Login.submitButtonTitle, for: .normal)
-        loginButton.setTitleColor(.label, for: .normal)
-        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        loginButton.backgroundColor = .systemGreen
-        return loginButton
-    }()
+    private let stackContainer = UIView()
     
     private let stack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = MembershipConstants.stackSpacing
+        stack.spacing = MembershipConstants.textFieldStackSpacing
         return stack
+    }()
+    
+    private let takeActionView: TakeActionView = {
+        let takeActionView = TakeActionView()
+        takeActionView.viewModel = MembershipViewModel(type: .login)
+        return takeActionView
     }()
     
     // MARK: Init
@@ -70,35 +69,41 @@ class LoginView: UIView {
     init() {
         super.init(frame: .zero)
         
-        stack.addArrangedSubview(titleLabel)
-        stack.addArrangedSubview(emailTextField)
-        stack.addArrangedSubview(passwordTextField)
-        stack.addArrangedSubview(goToSignupButton)
-
-        addSubview(stack)
-        addSubview(loginButton)
+        takeActionView.delegate = self
+        
+        stack.addArrangedSubviews([emailTextField, passwordTextField])
+        stackContainer.addSubview(stack)
+        addSubviews([headlineView, stackContainer, takeActionView])
+        
+        headlineView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.topMargin).offset(MembershipConstants.headlineTopInset)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        stackContainer.snp.makeConstraints { make in
+            make.top.equalTo(headlineView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(takeActionView.snp.top)
+        }
         
         stack.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(MembershipConstants.stackHorizontalInset)
+            make.centerY.greaterThanOrEqualToSuperview()
+            make.leading.trailing.equalToSuperview().inset(MembershipConstants.textFieldStackHorizontalInset)
         }
         
-        loginButton.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(stack.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(MembershipConstants.submitButtonHeight)
+        takeActionView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottomMargin).inset(MembershipConstants.takeActionBottomInset)
         }
-        
-        goToSignupButton.isHidden = AuthKitManager.shared.membershipOption == .loginOnly ? true : false
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Actions
+    // MARK: TakeActionViewDelegate
     
-    @objc private func loginButtonTapped() {
+    func submit() {
         if emailTextField.isFulfilled,
            passwordTextField.isFulfilled,
            let email = emailTextField.text,
@@ -109,9 +114,8 @@ class LoginView: UIView {
         }
     }
     
-    @objc private func goToSignupButtonTapped() {
+    func goTo(_ type: ViewType) {
         delegate?.toggleMembershipView(toShowLogin: false)
     }
     
 }
-

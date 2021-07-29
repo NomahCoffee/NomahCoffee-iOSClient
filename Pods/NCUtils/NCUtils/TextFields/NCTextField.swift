@@ -25,11 +25,13 @@ open class NCTextField: UITextField {
     /// ```textField.isFulfilled = true```. The default value is `false`.
     open var isFulfilled: Bool = false {
         didSet {
-            layer.borderColor = isFulfilled ?
-                Constants.Color.fulfilled :
-                Constants.Color.unfulfilled
+            layer.borderColor = isFulfilled ? activeBorderColor : Constants.Color.unfulfilled
         }
     }
+    
+    /// The color of the border shown when a text field is active. Override this
+    /// value if you want a custom active border color.
+    open var activeBorderColor: CGColor = Constants.Color.fulfilled
     
     private var textInsets = UIEdgeInsets(top: Constants.Layout.textInset,
                                   left: Constants.Layout.textInset,
@@ -44,6 +46,8 @@ open class NCTextField: UITextField {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        font = Fonts.Oxygen.title6
         
         layer.borderWidth = Constants.Layout.inactiveBorderWidth
         layer.borderColor = Constants.Color.fulfilled
@@ -74,6 +78,14 @@ open class NCTextField: UITextField {
     
     open override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: textInsets))
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        NSLayoutConstraint.activate([
+            self.heightAnchor.constraint(equalToConstant: 64)
+        ])
     }
     
     // MARK: Action Functions

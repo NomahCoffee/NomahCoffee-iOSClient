@@ -17,8 +17,7 @@ struct CartConstants {
     
     static let checkoutButtonHeight: CGFloat = 64
     static let labelStackSpacing: CGFloat = 4
-    static let imageViewCornerRadius: CGFloat = 4
-    static let imageViewBorderWidth: CGFloat = 1
+    static let imageViewCornerRadius: CGFloat = 16
     static let cellInset: CGFloat = 8
     
 }

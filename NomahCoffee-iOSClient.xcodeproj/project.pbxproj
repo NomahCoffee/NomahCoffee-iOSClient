@@ -26,6 +26,10 @@
 		822CA142269B636D00BD6EFE /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA141269B636D00BD6EFE /* MenuCell.swift */; };
 		822CA144269B6B5600BD6EFE /* CartConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA143269B6B5600BD6EFE /* CartConstants.swift */; };
 		822CA147269B751500BD6EFE /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822CA146269B751500BD6EFE /* ProductDetailViewController.swift */; };
+		82C2948926A4C7AB00E8AB08 /* QuantityStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2948826A4C7AB00E8AB08 /* QuantityStepper.swift */; };
+		82C2948E26AA43A800E8AB08 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2948D26AA43A800E8AB08 /* SettingsViewController.swift */; };
+		82C2949126AA537B00E8AB08 /* ProductDetailConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2949026AA537B00E8AB08 /* ProductDetailConstants.swift */; };
+		82C2949326B0939A00E8AB08 /* CartHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2949226B0939A00E8AB08 /* CartHeader.swift */; };
 		82FAA9DD269F77EA006E3E28 /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FAA9DC269F77EA006E3E28 /* NetworkingError.swift */; };
 		82FAA9DF269F970B006E3E28 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82FAA9DE269F970B006E3E28 /* ProductDetailView.swift */; };
 		8FD1993C6D8BE365D8486EC5 /* Pods_NomahCoffee_iOSClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F4863B213D24088EFA2BFB3 /* Pods_NomahCoffee_iOSClient.framework */; };
@@ -56,6 +60,10 @@
 		822CA141269B636D00BD6EFE /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		822CA143269B6B5600BD6EFE /* CartConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartConstants.swift; sourceTree = "<group>"; };
 		822CA146269B751500BD6EFE /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		82C2948826A4C7AB00E8AB08 /* QuantityStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantityStepper.swift; sourceTree = "<group>"; };
+		82C2948D26AA43A800E8AB08 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		82C2949026AA537B00E8AB08 /* ProductDetailConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailConstants.swift; sourceTree = "<group>"; };
+		82C2949226B0939A00E8AB08 /* CartHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHeader.swift; sourceTree = "<group>"; };
 		82FAA9DC269F77EA006E3E28 /* NetworkingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		82FAA9DE269F970B006E3E28 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +120,7 @@
 				822CA12A269B5EB000BD6EFE /* Menu */,
 				822CA145269B750100BD6EFE /* ProductDetail */,
 				822CA12B269B5EBD00BD6EFE /* Cart */,
+				82C2948C26AA438D00E8AB08 /* Settings */,
 			);
 			path = "NomahCoffee-iOSClient";
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 			children = (
 				822CA13A269B60BC00BD6EFE /* MenuView.swift */,
 				822CA141269B636D00BD6EFE /* MenuCell.swift */,
+				82C2948826A4C7AB00E8AB08 /* QuantityStepper.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +192,7 @@
 		822CA133269B5FDF00BD6EFE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				82C2949226B0939A00E8AB08 /* CartHeader.swift */,
 				822CA134269B607100BD6EFE /* CartView.swift */,
 				822CA136269B608700BD6EFE /* CartCell.swift */,
 			);
@@ -203,8 +214,25 @@
 			children = (
 				822CA146269B751500BD6EFE /* ProductDetailViewController.swift */,
 				82FAA9E0269F97F5006E3E28 /* Views */,
+				82C2948F26AA536200E8AB08 /* Constants */,
 			);
 			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		82C2948C26AA438D00E8AB08 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				82C2948D26AA43A800E8AB08 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		82C2948F26AA536200E8AB08 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				82C2949026AA537B00E8AB08 /* ProductDetailConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		82FAA9E0269F97F5006E3E28 /* Views */ = {
@@ -337,7 +365,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82C2949126AA537B00E8AB08 /* ProductDetailConstants.swift in Sources */,
 				822CA137269B608700BD6EFE /* CartCell.swift in Sources */,
+				82C2949326B0939A00E8AB08 /* CartHeader.swift in Sources */,
 				822CA140269B62A200BD6EFE /* MenuViewModel.swift in Sources */,
 				822CA1192699E62E00BD6EFE /* NetworkingManager.swift in Sources */,
 				822CA13E269B615A00BD6EFE /* MenuConstants.swift in Sources */,
@@ -349,7 +379,9 @@
 				822CA1052699E0D600BD6EFE /* AppDelegate.swift in Sources */,
 				822CA11B2699E6A900BD6EFE /* User.swift in Sources */,
 				822CA13B269B60BC00BD6EFE /* MenuView.swift in Sources */,
+				82C2948E26AA43A800E8AB08 /* SettingsViewController.swift in Sources */,
 				822CA147269B751500BD6EFE /* ProductDetailViewController.swift in Sources */,
+				82C2948926A4C7AB00E8AB08 /* QuantityStepper.swift in Sources */,
 				822CA121269A16DE00BD6EFE /* CartViewController.swift in Sources */,
 				822CA1072699E0D600BD6EFE /* SceneDelegate.swift in Sources */,
 				822CA12D269B5F6C00BD6EFE /* MenuViewController.swift in Sources */,

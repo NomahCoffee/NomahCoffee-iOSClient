@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NCUtils
 
 protocol CartViewDelegate {
     /// Triggers a checkout attempt
@@ -43,6 +44,7 @@ class CartView: UIView, UITableViewDataSource, UITableViewDelegate {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = Colors.rockBlue
         tableView.register(CartCell.self, forCellReuseIdentifier: CartCell.reuseIdentifier)
         tableView.tableFooterView = UIView()
         return tableView
@@ -51,9 +53,11 @@ class CartView: UIView, UITableViewDataSource, UITableViewDelegate {
     private let checkoutButton: UIButton = {
         let checkoutButton = UIButton()
         checkoutButton.setTitle(CartConstants.checkoutButtonTitle, for: .normal)
-        checkoutButton.setTitleColor(.label, for: .normal)
-        checkoutButton.backgroundColor = .green
+        checkoutButton.setTitleColor(.white, for: .normal)
+        checkoutButton.backgroundColor = Colors.bismark
+        checkoutButton.titleLabel?.font = FontManager.OxygenBoldFontSize(16)
         checkoutButton.addTarget(self, action: #selector(checkoutButtonTapped), for: .touchUpInside)
+        checkoutButton.layer.cornerRadius = 16
         return checkoutButton
     }()
     
@@ -68,13 +72,13 @@ class CartView: UIView, UITableViewDataSource, UITableViewDelegate {
         addSubviews([tableView, checkoutButton])
         
         tableView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.edges.equalToSuperview()
         }
         
         checkoutButton.snp.makeConstraints { make in
-            make.top.equalTo(tableView.snp.bottom)
             make.height.equalTo(CartConstants.checkoutButtonHeight)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(24)
         }
     }
     

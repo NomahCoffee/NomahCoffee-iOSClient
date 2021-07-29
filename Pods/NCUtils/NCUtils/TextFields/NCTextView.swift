@@ -25,9 +25,7 @@ open class NCTextView: UITextView, UITextViewDelegate {
     /// ```textView.isFulfilled = true```. The default value is `false`.
     open var isFulfilled: Bool = false {
         didSet {
-            layer.borderColor = isFulfilled ?
-                Constants.Color.fulfilled :
-                Constants.Color.unfulfilled
+            layer.borderColor = isFulfilled ? activeBorderColor : Constants.Color.unfulfilled
         }
     }
     
@@ -38,6 +36,10 @@ open class NCTextView: UITextView, UITextViewDelegate {
             placeholderLabel.text = placeholder
         }
     }
+    
+    /// The color of the border shown when a text field is active. Override this
+    /// value if you want a custom active border color.
+    open var activeBorderColor: CGColor = Constants.Color.fulfilled
     
     open override var text: String? {
         didSet {
@@ -54,6 +56,7 @@ open class NCTextView: UITextView, UITextViewDelegate {
     
     private var placeholderLabel: UILabel = {
         var placeholderLabel = UILabel()
+        placeholderLabel.font = Fonts.Oxygen.title6
         placeholderLabel.numberOfLines = 0
         placeholderLabel.textColor = .tertiaryLabel
         placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,13 +70,18 @@ open class NCTextView: UITextView, UITextViewDelegate {
         
         addSubview(placeholderLabel)
         NSLayoutConstraint.activate([
-            placeholderLabel.topAnchor.constraint(equalTo: topAnchor, constant: textContainerInset.top),
+            placeholderLabel.topAnchor.constraint(equalTo: topAnchor,
+                                                  constant: textContainerInset.top + Constants.Layout.additionalTextViewPadding),
             placeholderLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.Layout.textInset),
             placeholderLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.Layout.textInset),
             placeholderLabel.widthAnchor.constraint(equalTo: widthAnchor)
         ])
         
         textColor = .label
+        textContainerInset = UIEdgeInsets(top: textContainerInset.top + Constants.Layout.additionalTextViewPadding,
+                                          left: 0,
+                                          bottom: 0,
+                                          right: 0)
         
         isSelectable = true
         isEditable = true
@@ -83,6 +91,8 @@ open class NCTextView: UITextView, UITextViewDelegate {
         layer.cornerRadius = Constants.Layout.cornerRadius
         
         font = placeholderLabel.font
+        
+        backgroundColor = .none
         
         delegate = self
     }

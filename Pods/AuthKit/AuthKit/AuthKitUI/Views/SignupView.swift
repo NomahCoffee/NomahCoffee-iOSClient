@@ -22,74 +22,97 @@ protocol SignupViewDelegate: MembershipViewDelegate {
                 lastName: String, password: String, repassword: String)
 }
 
-class SignupView: UIView {
+class SignupView: UIView, TakeActionViewDelegate {
     
     var delegate: SignupViewDelegate?
-
-    private let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = MembershipConstants.Signup.headerTitle
-        return titleLabel
+    
+    private let headlineView: HeadlineView = {
+        let headlineView = HeadlineView()
+        headlineView.viewModel = MembershipViewModel(type: .signup)
+        return headlineView
     }()
     
     private let emailTextField: NCEmailTextField = {
         let emailTextField = NCEmailTextField()
+        emailTextField.textColor = .black
+        emailTextField.font = Fonts.Oxygen.title6
+        emailTextField.backgroundColor = Colors.sorrellBrown
+        emailTextField.activeBorderColor = UIColor.white.cgColor
         emailTextField.placeholder = MembershipConstants.Signup.emailTextFieldPlaceholder
         return emailTextField
     }()
     
     private let usernameTextField: NCTextField = {
         let usernameTextField = NCTextField()
+        usernameTextField.textColor = .black
+        usernameTextField.font = Fonts.Oxygen.title6
         usernameTextField.autocapitalizationType = .none
+        usernameTextField.backgroundColor = Colors.sorrellBrown
+        usernameTextField.activeBorderColor = UIColor.white.cgColor
         usernameTextField.placeholder = MembershipConstants.Signup.usernameTextFieldPlaceholder
         return usernameTextField
     }()
     
     private let firstNameTextField: NCTextField = {
         let firstNameTextField = NCTextField()
+        firstNameTextField.textColor = .black
+        firstNameTextField.font = Fonts.Oxygen.title6
+        firstNameTextField.backgroundColor = Colors.sorrellBrown
+        firstNameTextField.activeBorderColor = UIColor.white.cgColor
         firstNameTextField.placeholder = MembershipConstants.Signup.firstNameTextFieldPlaceholder
         return firstNameTextField
     }()
     
     private let lastNameTextField: NCTextField = {
         let lastNameTextField = NCTextField()
+        lastNameTextField.textColor = .black
+        lastNameTextField.font = Fonts.Oxygen.title6
+        lastNameTextField.backgroundColor = Colors.sorrellBrown
+        lastNameTextField.activeBorderColor = UIColor.white.cgColor
         lastNameTextField.placeholder = MembershipConstants.Signup.lastNameTextFieldPlaceholder
         return lastNameTextField
     }()
     
     private let passwordTextField: NCPasswordTextField = {
         let passwordTextField = NCPasswordTextField()
+        passwordTextField.textColor = .black
+        passwordTextField.font = Fonts.Oxygen.title6
+        passwordTextField.backgroundColor = Colors.sorrellBrown
+        passwordTextField.activeBorderColor = UIColor.white.cgColor
         passwordTextField.placeholder = MembershipConstants.Signup.passwordTextFieldPlaceholder
         return passwordTextField
     }()
     
     private let repasswordTextField: NCPasswordTextField = {
         let repasswordTextField = NCPasswordTextField()
+        repasswordTextField.textColor = .black
+        repasswordTextField.font = Fonts.Oxygen.title6
+        repasswordTextField.backgroundColor = Colors.sorrellBrown
+        repasswordTextField.activeBorderColor = UIColor.white.cgColor
         repasswordTextField.placeholder = MembershipConstants.Signup.repasswordTextFieldPlaceholder
         return repasswordTextField
     }()
     
-    private let goToLoginButton: UIButton = {
-        let goToLoginButton = UIButton()
-        goToLoginButton.setTitle(MembershipConstants.Signup.toggleButtonTitle, for: .normal)
-        goToLoginButton.setTitleColor(.label, for: .normal)
-        goToLoginButton.addTarget(self, action: #selector(goToLoginButtonTapped), for: .touchUpInside)
-        return goToLoginButton
+    private let stackContainer = UIView()
+    
+    private let nameStack: UIStackView = {
+        let nameStack = UIStackView()
+        nameStack.axis = .horizontal
+        nameStack.distribution = .fillEqually
+        nameStack.spacing = MembershipConstants.textFieldStackSpacing
+        return nameStack
     }()
     
-    private let signupButton: UIButton = {
-        let signupButton = UIButton()
-        signupButton.setTitle(MembershipConstants.Signup.submitButtonTitle, for: .normal)
-        signupButton.setTitleColor(.label, for: .normal)
-        signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
-        signupButton.backgroundColor = .systemGreen
-        return signupButton
+    private let takeActionView: TakeActionView = {
+        let takeActionView = TakeActionView()
+        takeActionView.viewModel = MembershipViewModel(type: .signup)
+        return takeActionView
     }()
     
     private let stack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = MembershipConstants.stackSpacing
+        stack.spacing = MembershipConstants.textFieldStackSpacing
         return stack
     }()
     
@@ -98,39 +121,43 @@ class SignupView: UIView {
     init() {
         super.init(frame: .zero)
         
-        stack.addArrangedSubview(titleLabel)
-        stack.addArrangedSubview(emailTextField)
-        stack.addArrangedSubview(usernameTextField)
-        stack.addArrangedSubview(firstNameTextField)
-        stack.addArrangedSubview(lastNameTextField)
-        stack.addArrangedSubview(passwordTextField)
-        stack.addArrangedSubview(repasswordTextField)
-        stack.addArrangedSubview(goToLoginButton)
+        takeActionView.delegate = self
         
-        addSubview(stack)
-        addSubview(signupButton)
+        nameStack.addArrangedSubviews([firstNameTextField, lastNameTextField])
+        stack.addArrangedSubviews([emailTextField, usernameTextField, nameStack,
+                                   passwordTextField, repasswordTextField])
+        stackContainer.addSubview(stack)
+        addSubviews([headlineView, stackContainer, takeActionView])
+
+        headlineView.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.topMargin).offset(MembershipConstants.headlineTopInset)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        stackContainer.snp.makeConstraints { make in
+            make.top.equalTo(headlineView.snp.bottom)
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(takeActionView.snp.top)
+        }
         
         stack.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(MembershipConstants.stackHorizontalInset)
+            make.leading.trailing.equalToSuperview().inset(MembershipConstants.textFieldStackHorizontalInset)
         }
         
-        signupButton.snp.makeConstraints { make in
-            make.top.greaterThanOrEqualTo(stack.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
-            make.height.equalTo(MembershipConstants.submitButtonHeight)
+        takeActionView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(safeAreaLayoutGuide.snp.bottomMargin).inset(MembershipConstants.takeActionBottomInset)
         }
-        
-        goToLoginButton.isHidden = AuthKitManager.shared.membershipOption == .signupOnly ? true : false
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: Actions
+    // MARK: TakeActionViewDelegate
     
-    @objc private func signupButtonTapped() {
+    func submit() {
         if emailTextField.isFulfilled,
            usernameTextField.isFulfilled,
            firstNameTextField.isFulfilled,
@@ -152,7 +179,7 @@ class SignupView: UIView {
            }
     }
     
-    @objc private func goToLoginButtonTapped() {
+    func goTo(_ type: ViewType) {
         delegate?.toggleMembershipView(toShowLogin: true)
     }
 

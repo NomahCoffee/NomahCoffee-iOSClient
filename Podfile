@@ -12,8 +12,8 @@ target 'NomahCoffee-iOSClient' do
   pod 'Stripe', '~> 21.7'
 
   # NomahCoffee Frameworks
-  pod 'NCUtils', '~> 1.2'
-  pod 'AuthKit', '~> 1.2'
+  pod 'NCUtils', '~> 1.4'
+  pod 'AuthKit', '~> 1.3'
 
 
 end

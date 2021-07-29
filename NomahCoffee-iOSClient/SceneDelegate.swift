@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        AuthKitManager.shared.homeViewController = UINavigationController(rootViewController: MenuViewController())
+        AuthKitManager.shared.homeViewController = MenuViewController()
         AuthKitManager.shared.userClass = User.self
         AuthKitManager.shared.startSession(from: window, completion: { showMembershipScreen in
             window.makeKeyAndVisible()

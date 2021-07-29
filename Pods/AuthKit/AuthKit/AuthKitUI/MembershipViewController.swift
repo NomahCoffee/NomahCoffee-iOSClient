@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import NCUtils
 
 class MembershipViewController: UIViewController, LoginViewDelegate, SignupViewDelegate {
     
@@ -31,9 +32,8 @@ class MembershipViewController: UIViewController, LoginViewDelegate, SignupViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
-        view.addSubview(loginView)
-        view.addSubview(signupView)
+        view.backgroundColor = Colors.shadow
+        view.addSubviews([loginView, signupView])
         
         loginView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

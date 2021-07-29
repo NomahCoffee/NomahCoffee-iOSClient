@@ -58,9 +58,10 @@ public class NetworkingManager {
     /// Adds a coffee to the current user's cart
     /// - Parameters:
     ///   - coffee: a `Coffee` object of the type of item that is to be added to cart
+    ///   - quantity: an `Int` for the number of coffee items to be added to cart
     ///   - completion: a callback of type `User?, NetworkingError?` that will return the updated user and nil in
     ///   the case of a success or nil and an error in the case of a fail
-    static func addToCart(coffee: Coffee, completion: @escaping (User?, NetworkingError?) -> Void) {
+    static func addToCart(coffee: Coffee, with quantity: Int, completion: @escaping (User?, NetworkingError?) -> Void) {
         guard let authToken = UserDefaults().string(forKey: "authToken") else {
             completion(nil, .lostAuthToken)
             return
@@ -76,7 +77,7 @@ public class NetworkingManager {
             method: .post,
             parameters: ["coffeeId": coffee.id,
                          "userId": user.id,
-                         "quantity": 1],
+                         "quantity": quantity],
             headers: getHeaders(with: authToken)
         ).responseJSON { response in
             switch response.result {

@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "AuthKit.h"
 
 FOUNDATION_EXPORT double AuthKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char AuthKitVersionString[];

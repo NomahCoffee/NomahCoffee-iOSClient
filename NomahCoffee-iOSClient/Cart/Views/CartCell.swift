@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NCUtils
 
 class CartCell: UITableViewCell {
 
@@ -30,7 +31,7 @@ class CartCell: UITableViewCell {
             }
             
             if let quantity = cartItem?.quantity {
-                quantityButton.setTitle("\(CartConstants.quantityButtonTitle): \(quantity)", for: .normal)
+                quantityLabel.text = "\(CartConstants.quantityButtonTitle): \(quantity)"
             }
             
             configureCell()
@@ -41,7 +42,6 @@ class CartCell: UITableViewCell {
         let productImageView = UIImageView()
         productImageView.backgroundColor = .systemGray
         productImageView.contentMode = .scaleAspectFill
-        productImageView.layer.borderWidth = CartConstants.imageViewBorderWidth
         productImageView.layer.cornerRadius = CartConstants.imageViewCornerRadius
         productImageView.layer.masksToBounds = true
         return productImageView
@@ -50,6 +50,7 @@ class CartCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.lineBreakMode = .byTruncatingTail
+        titleLabel.font = FontManager.OxygenBoldFontSize(24)
         titleLabel.numberOfLines = 1
         return titleLabel
     }()
@@ -57,22 +58,24 @@ class CartCell: UITableViewCell {
     private let subtitleLabel: UILabel = {
         let subtitleLabel = UILabel()
         subtitleLabel.lineBreakMode = .byTruncatingTail
+        subtitleLabel.font = FontManager.OxygenRegularFontSize(20)
         subtitleLabel.numberOfLines = 1
         return subtitleLabel
     }()
     
-    private let quantityButton: UIButton = {
-        let quantityButton = UIButton()
-        quantityButton.contentHorizontalAlignment = .left
-        quantityButton.setTitleColor(.label, for: .normal)
-        return quantityButton
+    private let quantityLabel: UILabel = {
+        let quantityLabel = UILabel()
+        quantityLabel.lineBreakMode = .byTruncatingTail
+        quantityLabel.font = FontManager.OxygenRegularFontSize(20)
+        quantityLabel.numberOfLines = 1
+        return quantityLabel
     }()
     
     private let labelStack: UIStackView = {
         let labelStack = UIStackView()
         labelStack.axis = .vertical
-        labelStack.distribution = .fillEqually
-        labelStack.spacing = CartConstants.labelStackSpacing
+//        labelStack.distribution = .fillEqually
+        labelStack.spacing = 4//CartConstants.labelStackSpacing
         return labelStack
     }()
     
@@ -81,6 +84,7 @@ class CartCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        backgroundColor = Colors.rockBlue
         configureCell()
     }
     
@@ -95,7 +99,7 @@ class CartCell: UITableViewCell {
     }
     
     private func configureCell() {
-        labelStack.addArrangedSubviews([titleLabel, subtitleLabel, quantityButton])
+        labelStack.addArrangedSubviews([titleLabel, subtitleLabel, quantityLabel])
         addSubviews([productImageView, labelStack])
         
         productImageView.snp.makeConstraints { make in

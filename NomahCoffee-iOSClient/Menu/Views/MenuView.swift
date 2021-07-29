@@ -6,23 +6,23 @@
 //
 
 import UIKit
+import NCUtils
 
 protocol MenuViewDelegate {
-    /// Triggers a logout action
-    func logout()
     /// Triggers a new view controller to be presented
     /// - Parameter viewController: a `UIViewController` object that is to be presented
     func present(viewController: UIViewController)
     /// Triggers an add to cart action
     /// - Parameter coffee: the `Coffee` object that is to be added
-    func add(_ coffee: Coffee)
+    /// - Parameter quantity: an `Int` for the number of coffee items
+    func add(_ coffee: Coffee, with quantity: Int)
 }
 
-class MenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, MenuCellDelegate {
+class MenuView: UIScrollView, UICollectionViewDelegate, UICollectionViewDataSource, CartProtocol {
 
     // MARK: Properties
     
-    var delegate: MenuViewDelegate?
+    var menuViewDelegate: MenuViewDelegate?
     
     var viewModel: MenuViewModel? {
         didSet {
@@ -30,27 +30,44 @@ class MenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, Me
         }
     }
     
-    private lazy var collectionView: UICollectionView = {
+    private let backgroundView: UIView = {
+        let backgroundView = UIView()
+        return backgroundView
+    }()
+        
+    private let titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.text = MenuConstants.navigationBarTitle
+        titleLabel.font = Fonts.Oxygen.header1
+        return titleLabel
+    }()
+    
+    private let settingsButton: UIButton = {
+        let settingsButton = UIButton()
+        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 24)
+        settingsButton.setImage(UIImage(systemName: "gearshape.fill",
+                                        withConfiguration: symbolConfig),
+                                for: .normal)
+        settingsButton.addTarget(self, action: #selector(settingsButtonTapped), for: .touchUpInside)
+        settingsButton.tintColor = .black
+        settingsButton.contentHorizontalAlignment = .right
+        return settingsButton
+    }()
+    
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = MenuConstants.cellSize
         layout.sectionInset = MenuConstants.collectionViewInsets
+        layout.minimumLineSpacing = 24
+        layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(MenuCell.self,
                                 forCellWithReuseIdentifier: MenuCell.reuseIdentifier)
-        collectionView.backgroundColor = .systemBackground
-        
+        collectionView.backgroundColor = .clear
         return collectionView
-    }()
-    
-    private let logoutButton: UIButton = {
-        let logoutButton = UIButton()
-        logoutButton.setTitle(MenuConstants.logoutButtonTitle, for: .normal)
-        logoutButton.setTitleColor(.label, for: .normal)
-        logoutButton.backgroundColor = .red
-        logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
-        return logoutButton
     }()
     
     // MARK: Init
@@ -58,16 +75,30 @@ class MenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, Me
     init() {
         super.init(frame: .zero)
         
-        addSubviews([collectionView, logoutButton])
+        backgroundColor = Colors.shadow
         
-        collectionView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+        backgroundView.addSubviews([titleLabel, settingsButton, collectionView])
+        addSubview(backgroundView)
+                
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(24)
+            make.leading.equalToSuperview().inset(16)
+            make.trailing.equalTo(settingsButton.snp.leading)
         }
         
-        logoutButton.snp.makeConstraints { make in
-            make.top.equalTo(collectionView.snp.bottom)
-            make.height.equalTo(MenuConstants.logoutButtonHeight)
+        settingsButton.snp.makeConstraints { make in
+            make.centerY.equalTo(titleLabel.snp.centerY)
+            make.trailing.equalToSuperview().inset(16)
+        }
+        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(32)
             make.leading.trailing.bottom.equalToSuperview()
+            make.height.equalTo(MenuConstants.cellSize.height)
+        }
+        
+        backgroundView.snp.makeConstraints { make in
+            make.edges.width.equalToSuperview()
         }
     }
     
@@ -77,8 +108,8 @@ class MenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, Me
     
     // MARK: Actions
     
-    @objc private func logoutButtonTapped() {
-        delegate?.logout()
+    @objc private func settingsButtonTapped() {
+        menuViewDelegate?.present(viewController: SettingsViewController())
     }
     
     // MARK: UICollectionViewDataSource
@@ -105,13 +136,13 @@ class MenuView: UIView, UICollectionViewDelegate, UICollectionViewDataSource, Me
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let coffee = viewModel?.coffees[indexPath.row] else { return }
-        delegate?.present(viewController: ProductDetailViewController(coffee: coffee))
+        menuViewDelegate?.present(viewController: ProductDetailViewController(coffee: coffee))
     }
     
     // MARK: MenuCellDelegate
     
-    func add(coffee: Coffee) {
-        delegate?.add(coffee)
+    func add(coffee: Coffee, with quantity: Int) {
+        menuViewDelegate?.add(coffee, with: quantity)
     }
     
 }

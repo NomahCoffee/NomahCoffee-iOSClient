@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "NCUtils.h"
 
 FOUNDATION_EXPORT double NCUtilsVersionNumber;
 FOUNDATION_EXPORT const unsigned char NCUtilsVersionString[];

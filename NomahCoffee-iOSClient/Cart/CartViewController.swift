@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import Stripe
 import AuthKit
+import NCUtils
 
 class CartViewController: UIViewController, CartViewDelegate {
     
@@ -16,12 +17,17 @@ class CartViewController: UIViewController, CartViewDelegate {
     
     private var paymentSheet: PaymentSheet?
     
-    private lazy var cartView: CartView = {
+    lazy var header: CartHeader = {
+        let header = CartHeader()
+        return header
+    }()
+    
+    lazy var cartView: CartView = {
         let cartView = CartView()
         cartView.delegate = self
         return cartView
     }()
-        
+            
     // MARK: Init
 
     override func viewDidLoad() {
@@ -33,13 +39,44 @@ class CartViewController: UIViewController, CartViewDelegate {
                                                            action: #selector(closeButtonTapped))
         title = CartConstants.navigationBarTitle
         
-        view.backgroundColor = .systemBackground
-        view.addSubview(cartView)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceivedData(_:)), name: .didReceiveData, object: nil)
         
-        cartView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        view.backgroundColor = Colors.rockBlue
+        view.addSubviews([header, cartView])
+        
+        header.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview()
         }
         
+        cartView.snp.makeConstraints { make in
+            make.top.equalTo(header.snp.bottom).offset(12)
+            make.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        if let me = AuthKitManager.shared.currentUser as? User {
+            self.cartView.viewModel = CartViewModel(cartItems: me.cart)
+        }
+        
+        AuthKitManager.shared.updateCurrentUser()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let me = AuthKitManager.shared.currentUser as? User {
+            let viewModel = CartViewModel(cartItems: me.cart)
+            self.header.viewModel = viewModel
+            self.cartView.viewModel = viewModel
+        }
+        
+        setupPaymentDrawer()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .didReceiveData, object: nil)
+    }
+    
+    func setupPaymentDrawer() {
         // Fetch the PaymentIntent and Customer information from the backend if user has something in their cart
         guard let user = AuthKitManager.shared.currentUser as? User, user.cart.count > 0 else { return }
         
@@ -64,14 +101,6 @@ class CartViewController: UIViewController, CartViewDelegate {
                 self.paymentSheet = PaymentSheet(paymentIntentClientSecret: paymentIntentClientSecret, configuration: configuration)
             }
         })
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if let me = AuthKitManager.shared.currentUser as? User {
-            self.cartView.viewModel = CartViewModel(cartItems: me.cart)
-        }
     }
     
     // MARK: Action
@@ -122,10 +151,29 @@ class CartViewController: UIViewController, CartViewDelegate {
                 guard let currentUser = currentUser else { return }
                 
                 DispatchQueue.main.async {
-                    self.cartView.viewModel = CartViewModel(cartItems: currentUser.cart)
+                    let viewModel = CartViewModel(cartItems: currentUser.cart)
+                    self.header.viewModel = viewModel
+                    self.cartView.viewModel = viewModel
                 }
             }
         })
     }
+    
+    // MARK: NotificationCenter
+    
+    @objc func onDidReceivedData(_ notification: Notification) {
+        if let me = AuthKitManager.shared.currentUser as? User {
+            let viewModel = CartViewModel(cartItems: me.cart)
+            self.header.viewModel = viewModel
+            self.cartView.viewModel = viewModel
+            self.setupPaymentDrawer()
+        }
+    }
 
+}
+
+extension Notification.Name {
+    
+    static let didReceiveData = Notification.Name("didReceiveData")
+    
 }
